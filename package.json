@@ -27,7 +27,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-markdown": "^1.0.0-beta.4",
     "eslint-plugin-react": "^6.7.1",
-    "flow-bin": "^0.47.0",
+    "flow-bin": "^0.48.0",
     "glob": "^7.1.1",
     "graceful-fs": "^4.1.11",
     "immutable": "^4.0.0-rc.1",
@@ -56,7 +56,6 @@
     "build-clean": "rm -rf ./packages/*/build ./packages/*/build-es5",
     "build": "node ./scripts/build.js",
     "clean-all": "rm -rf ./node_modules && rm -rf ./packages/*/node_modules && rm -rf ./integration_tests/*/*/node_modules && yarn run build-clean",
-    "danger": "node ./danger/node_modules/.bin/danger",
     "jest": "node ./packages/jest-cli/bin/jest.js",
     "jest-coverage": "yarn run jest --silent -- --coverage",
     "lint": "yarn run lint-prettier --silent && eslint . --cache && yarn run lint-docs --silent",
@@ -102,7 +101,7 @@
     },
     "setupTestFrameworkScriptFile": "<rootDir>/testSetupFile.js",
     "snapshotSerializers": [
-      "<rootDir>/packages/pretty-format/build/plugins/ConvertAnsi.js"
+      "<rootDir>/packages/pretty-format/build/plugins/convert_ansi.js"
     ],
     "testEnvironment": "./packages/jest-environment-node",
     "testPathIgnorePatterns": [
@@ -114,7 +113,7 @@
       "/packages/.*/build-es5"
     ],
     "testMatch": [
-      "**/*-test.js"
+      "**/*.test.js"
     ]
   }
 }

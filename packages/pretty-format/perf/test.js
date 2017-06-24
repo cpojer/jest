@@ -13,7 +13,7 @@ const React = require('react');
 const ReactTestRenderer = require('react-test-renderer');
 const leftPad = require('left-pad');
 const prettyFormat = require('../build');
-const ReactTestComponent = require('../build/plugins/ReactTestComponent');
+const ReactTestComponent = require('../build/plugins/react_test_component');
 const worldGeoJson = require('./world.geo.json');
 
 const NANOSECONDS = 1000000000;
