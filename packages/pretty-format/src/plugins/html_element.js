@@ -8,7 +8,13 @@
  * @flow
  */
 
-import type {Colors, Indent, Options, Print, Plugin} from 'types/PrettyFormat';
+import type {
+  Colors,
+  Indent,
+  PluginOptions,
+  Print,
+  Plugin,
+} from 'types/PrettyFormat';
 
 import escapeHTML from './lib/escape_html';
 
@@ -61,15 +67,26 @@ function printChildren(flatChildren, print, indent, colors, opts) {
     .join(opts.edgeSpacing);
 }
 
-function printAttributes(attributes: Array<Attribute>, indent, colors, opts) {
+function printAttributes(
+  attributes: Array<Attribute>,
+  print,
+  indent,
+  colors,
+  opts,
+) {
   return attributes
-    .sort()
+    .sort(
+      (attributeA, attributeB) =>
+        attributeA.name === attributeB.name
+          ? 0
+          : attributeA.name < attributeB.name ? -1 : 1,
+    )
     .map(attribute => {
       return (
         opts.spacing +
         indent(colors.prop.open + attribute.name + colors.prop.close + '=') +
         colors.value.open +
-        `"${attribute.value}"` +
+        print(attribute.value) +
         colors.value.close
       );
     })
@@ -80,7 +97,7 @@ const print = (
   element: HTMLElement | HTMLText | HTMLComment,
   print: Print,
   indent: Indent,
-  opts: Options,
+  opts: PluginOptions,
   colors: Colors,
 ): string => {
   if (element.nodeType === 3) {
@@ -106,7 +123,7 @@ const print = (
   const hasAttributes = element.attributes && element.attributes.length;
   if (hasAttributes) {
     const attributes = Array.prototype.slice.call(element.attributes);
-    result += printAttributes(attributes, indent, colors, opts);
+    result += printAttributes(attributes, print, indent, colors, opts);
   }
 
   const flatChildren = Array.prototype.slice.call(element.childNodes);

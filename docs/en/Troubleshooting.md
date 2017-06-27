@@ -48,7 +48,7 @@ being recognized by Jest?
 
 Retry with [`--no-cache`](/jest/docs/cli.html#cache). Jest caches transformed module files to speed up test execution.
 If you are using your own custom transformer, consider adding a `getCacheKey`
-function to it: [getCacheKey in Relay](https://github.com/facebook/relay/blob/master/scripts/jest/preprocessor.js#L63-L67).
+function to it: [getCacheKey in Relay](https://github.com/facebook/relay/blob/58cf36c73769690f0bbf90562707eadb062b029d/scripts/jest/preprocessor.js#L56-L61).
 
 ### Unresolved Promises
 
@@ -94,6 +94,17 @@ jest --runInBand
 
 # Using npm test (e.g. with create-react-app)
 npm test -- --runInBand
+```
+
+Another alternative to expediting test execution time on Continuous Integration Servers such as Travis-CI is to set the max
+worker pool to ~_4_.  Specifically on Travis-CI, this can reduce test execution time in half.  
+
+```bash
+# Using Jest CLI
+jest --maxWorkers=4
+
+# Using npm test (e.g. with create-react-app)
+npm test -- --maxWorkers=4
 ```
 
 ### Tests are slow when leveraging automocking
