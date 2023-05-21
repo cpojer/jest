@@ -2717,7 +2717,7 @@ __metadata:
     "@types/graceful-fs": ^4.1.3
     "@types/micromatch": ^4.0.1
     "@types/node": "*"
-    ansi-escapes: ^4.2.1
+    ansi-escapes: ^6.2.0
     chalk: ^4.0.0
     ci-info: ^3.2.0
     exit: ^0.1.2
@@ -5797,6 +5797,15 @@ __metadata:
   dependencies:
     type-fest: ^3.0.0
   checksum: 7ce5d9cefd3d7345dc00161aea2ea9ad5fb3dd66658d4e8731ea047be838d755100f0823a05523d0e518e8e080746fc0a45d3ea3053099376bdd572efaedc7c1
+  languageName: node
+  linkType: hard
+
+"ansi-escapes@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "ansi-escapes@npm:6.2.0"
+  dependencies:
+    type-fest: ^3.0.0
+  checksum: f0bc667d5f1ededc3ea89b73c34f0cba95473525b07e1290ddfd3fc868c94614e95f3549f5c4fd0c05424af7d3fd298101fb3d9a52a597d3782508b340783bd7
   languageName: node
   linkType: hard
 
@@ -13024,7 +13033,7 @@ __metadata:
     "@jest/test-result": "workspace:^"
     "@jest/types": "workspace:^"
     "@types/node": "*"
-    ansi-escapes: ^4.2.1
+    ansi-escapes: ^6.2.0
     chalk: ^4.0.0
     emittery: ^0.13.1
     jest-util: "workspace:^"
