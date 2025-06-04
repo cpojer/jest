@@ -2,13 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "module": "preserve",
     "moduleResolution": "bundler",
-    "composite": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
+    "noEmit": true,
     "stripInternal": true,
-
     "strict": true,
 
     /* Additional Checks */
@@ -23,5 +21,6 @@
     "isolatedModules": true,
     "skipLibCheck": false,
     "resolveJsonModule": true
-  }
+  },
+  "exclude": ["**/__tests__/**"]
 }

@@ -34,7 +34,7 @@ export const typeOnlyPackages = new Set([
 ]);
 
 // Get absolute paths of all directories under packages/*
-function getPackages() {
+export function getPackages() {
   const packages = fs
     .readdirSync(PACKAGES_DIR)
     .map(file => path.resolve(PACKAGES_DIR, file))
@@ -98,23 +98,25 @@ function getPackages() {
       `Package "${pkg.name}" does not export correct files`,
     );
 
-    if (pkg.types) {
-      assert.strictEqual(
-        pkg.main,
-        './build/index.js',
-        `Package "${pkg.name}" should have "./build/index.js" as main`,
-      );
-      assert.strictEqual(
-        pkg.types,
-        './build/index.d.ts',
-        `Package "${pkg.name}" should have "./build/index.d.ts" as types`,
-      );
-    } else {
-      assert.strictEqual(
-        pkg.main,
-        './index.js',
-        `Package "${pkg.name}" should have "./index.js" as main`,
-      );
+    if (pkg.name !== '@jest/globals') {
+      if (pkg.types) {
+        assert.strictEqual(
+          pkg.main,
+          './build/index.js',
+          `Package "${pkg.name}" should have "./build/index.js" as main`,
+        );
+        assert.strictEqual(
+          pkg.types,
+          './build/index.d.ts',
+          `Package "${pkg.name}" should have "./build/index.d.ts" as types`,
+        );
+      } else {
+        assert.strictEqual(
+          pkg.main,
+          './index.js',
+          `Package "${pkg.name}" should have "./index.js" as main`,
+        );
+      }
     }
 
     if (pkg.bin) {
